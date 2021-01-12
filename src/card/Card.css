@@ -1,0 +1,59 @@
+.card {
+    width: 90%;
+    height: 350px;  
+    background: linear-gradient(var(--blue), white);
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0 0 10px -5px black;
+}
+
+.card-title {
+    font-size: larger;
+    font-weight: 900;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+    max-height: 30px;
+    text-overflow: ellipsis;
+}
+.card-description {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.card-footer {
+    background-color: rgba(0, 0, 0, 0.171);
+    transition: 0.3s ease-out;
+}
+
+.card-footer > a {
+    text-decoration: none;
+    color: black
+}
+
+.card-footer:hover {
+    background-color: rgba(0, 0, 0, 0.589);
+}
+
+.card-body {
+    flex: 1;
+    max-height: 90%;
+    overflow: hidden;
+}
+
+@media(max-width: 800){
+    .card {
+        width: 100px;
+        background: red;
+    }
+}
+
