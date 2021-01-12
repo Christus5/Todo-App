@@ -1,0 +1,70 @@
+:root {
+    --input-color: rgb(135, 255, 135);
+}
+
+.create-todo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+
+.inputs > textarea {
+    min-height: 150px;
+    min-height: 150px;
+    resize: none;
+}
+
+.inputs > input,
+.inputs > textarea {
+    box-sizing: border-box;
+    min-height: 1.5em;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    padding: 0.5em;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    transition: 0.4s ease-out;
+    border: 1px solid white;
+}
+
+.inputs > input:focus,
+.inputs > textarea:focus {
+    width: 100%;
+    box-shadow: 0 0 10px -2px var(--input-color);
+    border: 1px solid var(--input-color);
+    text-align: left;
+}
+
+.inputs > label {
+    margin: 0.6em 0;
+    font-weight: 900;
+}
+
+.buttons > button {
+    width: 100%;
+    padding: 1em;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+    box-shadow: 0 0 10px -5px black;
+
+}
+
+.buttons > button:hover {
+    background-color: rgb(69, 69, 253);
+    box-shadow: 0 0 25px -5px rgb(69, 69, 253);
+}
+
+.buttons > button:active {
+    transform: scaleX(1.5);
+  }
