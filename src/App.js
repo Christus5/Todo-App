@@ -1,5 +1,8 @@
 import React from 'react';
 import Table from './table/Table';
+import CreateTodo from './createTodo/CreateTodo';
+import Card from './card/Card';
+import Grid from './grid/Grid';
 
 import './App.css';
 
@@ -10,7 +13,8 @@ class App extends React.Component {
     this.state = {
       todoList: [],
       todoTitle: '',
-      todoDescription: ''
+      todoDescription: '',
+      gridView: false
     }
 
     this.handleTitleChange = (e) => {
@@ -24,6 +28,9 @@ class App extends React.Component {
       });
     };
     this.addTodo = () => {
+      if (!this.state.todoTitle || !this.state.todoDescription) {
+        return;
+      }
       const newTodo = {
         title: this.state.todoTitle,
         description: this.state.todoDescription
@@ -38,30 +45,49 @@ class App extends React.Component {
 
 
   render() {
-    const { todoTitle, todoDescription, todoList } = this.state;
+    const { todoTitle, todoDescription, todoList, gridView } = this.state;
+
 
     return (
       <div className="App">
-        <div className={'create-todo'}>
-          <div className={'inputs'}>
-            <input
-              type={'text'}
-              value={todoTitle}
-              onChange={this.handleTitleChange}
+        <header className={'page-header'}>
+          <div className={'create-todo-wrapper'}>
+            <CreateTodo
+              todoTitle={todoTitle}
+              handleTitleChange={this.handleTitleChange}
+              todoDescription={todoDescription}
+              handleDecriptionChange={this.handleDecriptionChange}
+              addTodo={this.addTodo}
             />
-            <textarea
-              value={todoDescription}
-              onChange={this.handleDecriptionChange}
-            ></textarea>
           </div>
-          <div className={'buttons'}>
-            <button onClick={this.addTodo}>Add Todo</button>
+        </header>
+
+        <section>
+          <div>
+            <button
+              className={'toggle-grid-button'}
+              onClick={() => this.setState(state => ({ gridView: !state.gridView }))}
+            >
+              <span className={'material-icons'}>
+                apps
+              </span>
+            </button>
           </div>
-        </div>
-        <div className={'table-wrapper'}>
-          <Table todoList={todoList} />
-        </div>
-      </div>
+          <div className={'content'}>
+            {gridView ? (
+              <div className={'grid-wrapper'}>
+                <Grid dataSource={todoList} Card={Card} />
+              </div>
+            ) : (
+                <div className={'table-wrapper'}>
+                  <Table todoList={todoList} />
+                </div>
+              )}
+          </div>
+
+
+        </section>
+      </div >
     );
   }
 }
