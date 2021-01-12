@@ -7,10 +7,10 @@ const Table = props => {
     const renderTodos = todoList.map(todo => {
         return (
             <tr key={todo.title}>
-                <td>
-                    {todo.title}
+                <td className={'todo-td'}>
+                    <a href={'#'}>{todo.title}</a>
                 </td>
-                <td>
+                <td className={'todo-td'}>
                     {todo.description}
                 </td>
             </tr>
@@ -21,8 +21,8 @@ const Table = props => {
         <table className={'todos-table'}>
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Description</th>
+                    <th className={'todo-th'}>Title</th>
+                    <th className={'todo-th'}>Description</th>
                 </tr>
             </thead>
             <tbody>
